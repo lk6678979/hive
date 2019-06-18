@@ -34,3 +34,11 @@ OK
 testhive
 Time taken: 0.808 seconds, Fetched: 1 row(s)
 ```
+#### 5. 建表(简历建一个学生表，数据使用|分割）
+```
+hive> create table student(id int, name string, sex string, age int, department string) row format delimited fields terminated by "|";
+OK
+Time taken: 0.335 seconds
+```
+* row format delimited fields terminated by "|",语句的意思是加载原始数据时，数据使用|作为字段的结束符，也就是使用|分割数据字段
+* 该操作会在hdfs中数据库目录下创建一个同名的文件夹
