@@ -18,8 +18,8 @@ hive>
 ```
 hive> create database testhive;
 OK
-Time taken: 1.529 seconds
-```
+Time ta
+* 创建数据库会在hdfs的hive目录(默认/user/hive/warehouse)下创建一个文件夹，名字为：`数据库名.db`，这里是testhive.db
 ### 3. 使用数据库
 ```
 hive> use testhive;
