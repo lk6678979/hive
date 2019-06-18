@@ -1,44 +1,14 @@
-## 基本操作
-### 1. 进入hive
-```shell
-[root@node1 ~]# hive
-WARNING: Use "yarn jar" to launch YARN applications.
-SLF4J: Class path contains multiple SLF4J bindings.
-SLF4J: Found binding in [jar:file:/usr/lib/hive/lib/log4j-slf4j-impl-2.8.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]
-SLF4J: Found binding in [jar:file:/usr/lib/zookeeper/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
-SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
-SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
-
-Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-2.1.1-cdh6.2.0.jar!/hive-log4j2.properties Async: false
-
-WARNING: Hive CLI is deprecated and migration to Beeline is recommended.
-hive> 
-```
-### 2. 创建数据库
-```
-hive> create database testhive;
-OK
-Time ta
-```
+## 笔记
+### 1.创建数据库
 * 创建数据库会在hdfs的hive目录(默认/user/hive/warehouse)下创建一个文件夹，名字为：`数据库名.db`，这里是testhive.db
-### 3. 使用数据库
-```
-hive> use testhive;
-OK
-Time taken: 1.362 seconds
-```
-### 4. 查看当前使用数据库
-```
-hive> select current_database();
-OK
-testhive
-Time taken: 0.808 seconds, Fetched: 1 row(s)
-```
-#### 5. 建表(简历建一个学生表，数据使用|分割）
-```
-hive> create table student(id int, name string, sex string, age int, department string) row format delimited fields terminated by "|";
-OK
-Time taken: 0.335 seconds
-```
+### 2. 建内部表
 * row format delimited fields terminated by "|",语句的意思是加载原始数据时，数据使用|作为字段的结束符，也就是使用|分割数据字段
 * 该操作会在hdfs中数据库目录下创建一个同名的文件夹
+### 3. 往内部表中加载数据
+* 需要提前准备数据文件
+* load文件，会在表目录下创建和被load的文件相同的一个文件（如果文件名冲突，会生成_copy_*的文件）
+* 文件中每行对应hive表的一行数据
+* 表中的字段根据字段的先后顺序和文件中每行数据字段的先后顺序匹配
+* 文件中每一行数据的每一个字段之前使用指定的结束符分割
+* 提交的数据，每行数字可以字段不足，不足的字段在表中int会转为null，字符串会转为空字符串，不会异常
+* 如果字段无法转换成表结构中定义的数据格式，会加载为null
