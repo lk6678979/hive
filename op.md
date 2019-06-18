@@ -20,3 +20,16 @@ hive> create database testhive;
 OK
 Time taken: 1.529 seconds
 ```
+### 3. 使用数据库
+```
+hive> use testhive;
+OK
+Time taken: 1.362 seconds
+```
+### 4. 查看当前使用数据库
+```
+hive> select current_database();
+OK
+testhive
+Time taken: 0.808 seconds, Fetched: 1 row(s)
+```
