@@ -31,4 +31,8 @@
 ### 11. Hive如果想支持delete和update操作，需要去hive手动配置支持事务
 * 普通hive配置方式：https://blog.csdn.net/levy_cui/article/details/66970903
 * CDH安装的hive配置方式：http://note.youdao.com/noteshare?id=2abb1f4e913c9886f067036b80b3e101&sub=C8AA582BBDD5479292E888A7E3B8DD40
+* 如果一个表要实现update和delete功能，该表就必须支持ACID，而支持ACID，就必须满足以下条件：
+* 表的存储格式必须是ORC（STORED AS ORC）；
+* 表必须进行分桶（CLUSTERED BY (col_name, col_name, …) INTO num_buckets BUCKETS）；
+* Table property中参数transactional必须设定为True（tblproperties(‘transactional’=‘true’)）；
 # 结论：要想在hive表中追加少量数据，只能去分区中的文件里直接追加数据，不能使用hive接口去追加，否则会产生大量小文件
