@@ -1,4 +1,4 @@
-系统性学习可以看下这个博客：https://www.cnblogs.com/qingyunzong/p/8707885.html，下面的笔记是自己测试的总结
+系统性学习可以看下这个博客：https://www.cnblogs.com/qingyunzong/p/8707885.html  下面的笔记是自己测试的总结
 ## 笔记
 ## hive on spark 在CDH的hive配置中搜索spark 配置完重启
 ### 1.创建数据库
