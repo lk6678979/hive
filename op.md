@@ -28,4 +28,7 @@
 * 需要SerDe支持指定编码格式，一般建议使用GBK，否则Hdfs中的数据下载下来全是乱码
 ### 9. 创建好表或者分区后，直接通过hdfs往文件夹中写文件，hive也是可以查询到的
 ### 10. Hive可以将查询的结果数据写入文件系统中
+### 11. Hive如果想支持delete和update操作，需要去hive手动配置支持事务
+* 普通hive配置方式：https://blog.csdn.net/levy_cui/article/details/66970903
+* CDH安装的hive配置方式：http://www.pianshen.com/article/5545163909/
 # 结论：要想在hive表中追加少量数据，只能去分区中的文件里直接追加数据，不能使用hive接口去追加，否则会产生大量小文件
