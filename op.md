@@ -30,5 +30,5 @@
 ### 10. Hive可以将查询的结果数据写入文件系统中
 ### 11. Hive如果想支持delete和update操作，需要去hive手动配置支持事务
 * 普通hive配置方式：https://blog.csdn.net/levy_cui/article/details/66970903
-* CDH安装的hive配置方式：http://www.pianshen.com/article/5545163909/
+* CDH安装的hive配置方式：http://note.youdao.com/noteshare?id=2abb1f4e913c9886f067036b80b3e101&sub=C8AA582BBDD5479292E888A7E3B8DD40
 # 结论：要想在hive表中追加少量数据，只能去分区中的文件里直接追加数据，不能使用hive接口去追加，否则会产生大量小文件
